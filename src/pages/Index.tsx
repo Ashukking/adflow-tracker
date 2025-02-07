@@ -10,7 +10,6 @@ const Index = () => {
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
 
   useEffect(() => {
-    // Request location on load
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -40,34 +39,34 @@ const Index = () => {
       title: "New Quotation",
       icon: FileText,
       description: "Create predefined or custom quotations",
-      color: "bg-slate text-slate-foreground",
+      color: "bg-slate/10 hover:bg-slate/20",
     },
     {
       title: "Record Attendance",
       icon: UserCheck,
       description: "Log your daily attendance with location",
-      color: "bg-sage text-sage-foreground",
+      color: "bg-sage/10 hover:bg-sage/20",
     },
     {
       title: "Initialize Project",
       icon: FolderGit2,
       description: "Set up new project repository",
-      color: "bg-slate text-slate-foreground",
+      color: "bg-slate/10 hover:bg-slate/20",
     },
     {
       title: "Send to Designer",
       icon: Clock,
       description: "Record design handoff timestamp",
-      color: "bg-sage text-sage-foreground",
+      color: "bg-sage/10 hover:bg-sage/20",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6">
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 p-6">
       <div className="max-w-7xl mx-auto space-y-8 fade-in">
         <header className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-slate-900">Sales Management System</h1>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-gradient">Sales Management System</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Manage quotations, track attendance, and initialize projects efficiently
           </p>
         </header>
@@ -79,13 +78,13 @@ const Index = () => {
               className="glass-card hover-scale p-6 space-y-4 border-none"
             >
               <div className={`rounded-full w-12 h-12 ${action.color} flex items-center justify-center`}>
-                <action.icon className="w-6 h-6" />
+                <action.icon className="w-6 h-6 text-foreground" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-semibold text-lg text-slate-900">{action.title}</h3>
-                <p className="text-sm text-slate-600">{action.description}</p>
+                <h3 className="font-semibold text-lg text-foreground">{action.title}</h3>
+                <p className="text-sm text-muted-foreground">{action.description}</p>
               </div>
-              <Button className="w-full bg-white text-slate-900 hover:bg-slate-50">
+              <Button className="w-full bg-white/5 text-foreground hover:bg-white/10 border border-white/10">
                 Get Started
               </Button>
             </Card>
@@ -94,7 +93,7 @@ const Index = () => {
 
         {location && (
           <Card className="glass-card p-4 max-w-md mx-auto text-center">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-muted-foreground">
               Location recorded: {location.lat.toFixed(6)}, {location.lng.toFixed(6)}
             </p>
           </Card>
